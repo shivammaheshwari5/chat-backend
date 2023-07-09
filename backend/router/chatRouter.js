@@ -13,7 +13,7 @@ const {
 } = require("../controllers/chatController");
 
 router.route("/").post(protect, accessChat);
-router.route("/").get(protect, fetchChats);
+router.route("/").get(fetchChats);
 router.route("/group").post(protect, createGroupChat);
 router.route("/rename").put(protect, renameGroup);
 router.route("/removegroup").put(protect, removeFromGroup);
