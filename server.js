@@ -19,7 +19,7 @@ app.use("/api/user", userRoute);
 app.use("/api/chat", chatRoute);
 app.use("/api/message", messageRoute);
 app.get("/", (req, res) => {
-  res.send("API is running..");
+  res.send("API is running and hello..");
 });
 app.get("/mine", (req, res) => {
   res.send("I love Sonam..");
