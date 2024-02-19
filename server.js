@@ -37,7 +37,7 @@ app.get('/api/chats',async (req, res) => {
 app.use(notFound);
 app.use(errorHandle);
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, console.log(`Server has started on ${PORT}`));
+const server = app.listen(PORT, console.log(`Server has started on ${PORT} and ${process.env.mongo_URI}`));
 
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
