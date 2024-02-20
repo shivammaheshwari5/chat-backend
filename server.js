@@ -16,13 +16,6 @@ app.use(express.json());
 app.use("/api/user", userRoute);
 app.use("/api/chat", chatRoute);
 app.use("/api/message", messageRoute);
-// app.get("/", (req, res) => {
-//   res.send("API is running..");
-// });
-
-// --------------------------deployment------------------------------
-
-const __dirname1 = path.resolve();
 
 app.get('/api/chats',async (req, res) => {
  const chat = await Chat.find({})
@@ -32,8 +25,6 @@ app.get('/api/chats',async (req, res) => {
     res.send("API is running..");
   });
 
-
-// --------------------------deployment------------------------------
 app.use(notFound);
 app.use(errorHandle);
 const PORT = process.env.PORT || 5000;
@@ -43,6 +34,8 @@ const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
     origin: "https://chat-frontend-sand.vercel.app",
+    methods: ["GET", "POST", 'PUT'],
+    credentials: true
   },
 });
 
