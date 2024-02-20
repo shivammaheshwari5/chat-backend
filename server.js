@@ -37,7 +37,7 @@ const server = app.listen(PORT, console.log(`Server has started on ${PORT} and $
 const io = require("socket.io")(server, {
   pingTimeout: 3600000, // 1 hour
   pingInterval: 25000, // 25 seconds
-  transports: ['websocket'],
+  transports: ['websocket', 'polling'],
   path: '/socket.io',
   secure: true,
   cors: {
