@@ -35,7 +35,11 @@ app.use(errorHandle);
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, console.log(`Server has started on ${PORT} and ${process.env.mongo_URI}`));
 const io = require("socket.io")(server, {
-  pingTimeout: 60000,
+  pingTimeout: 3600000, // 1 hour
+  pingInterval: 25000, // 25 seconds
+  transports: ['websocket'],
+  path: '/socket.io',
+  secure: true,
   cors: {
     origin: "https://chat-frontend-sand.vercel.app",
     methods: ["*"],
@@ -43,6 +47,7 @@ const io = require("socket.io")(server, {
     credentials: true
   },
 });
+
 
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
