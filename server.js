@@ -38,10 +38,12 @@ const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
     origin: "https://chat-frontend-sand.vercel.app",
-    methods: ["GET", "POST", 'PUT'],
+    methods: ["*"],
+    allowedHeaders: ["*"],
     credentials: true
   },
 });
+
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
 
